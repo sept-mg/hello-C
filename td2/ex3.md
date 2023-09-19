@@ -1,6 +1,6 @@
-#pseudo code exo3 factoriel
+#factoriel
 
-<u>début</u>
+début
     lire n au clavier
     i <- n
     f <- 1
@@ -10,4 +10,4 @@
         i <- i - 1
     fin tq
     afficher f
-<u>fin</u>
+fin
