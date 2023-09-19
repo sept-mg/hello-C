@@ -51,7 +51,7 @@ int main()
         scanf("%d", &j);
     }
 
-    if(j==res) {
+    if(j>=res) {
         j = 1;
         if(m==12) {
             m=1;
