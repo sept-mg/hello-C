@@ -1,3 +1,5 @@
+#pseudo code exo3 factoriel
+
 <u>début</u>
     lire n au clavier
     i <- n
