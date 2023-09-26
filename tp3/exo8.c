@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 enum { LONGUEUR_MAX = 100 };
 
@@ -12,7 +13,7 @@ int main()
 
     for (int i = 0; i < strlen(chaine); i++) 
     {
-        magique += chaine[i] - 64;
+        magique += toupper(chaine[i]) - 64;
     }
 
     while (magique >= 10) 
