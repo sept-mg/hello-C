@@ -49,9 +49,10 @@ int main() {
 
 
     //exo4
+    Carte temp;
     for (unsigned int i = 0; i < NB_CARTES - 1; i++) {
         int p = alea(i, NB_CARTES - 1); // Choisir une position au hasard
-        Carte temp = paquet[i];
+        temp = paquet[i];
         paquet[i] = paquet[p];
         paquet[p] = temp;
     }
