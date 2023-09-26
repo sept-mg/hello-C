@@ -49,7 +49,7 @@ int main() {
 
 
     //exo4
-    for (int i = 0; i < NB_CARTES - 1; i++) {
+    for (unsigned int i = 0; i < NB_CARTES - 1; i++) {
         int p = alea(i, NB_CARTES - 1); // Choisir une position au hasard
         Carte temp = paquet[i];
         paquet[i] = paquet[p];
@@ -58,7 +58,7 @@ int main() {
 
     
     //exo5
-    for (int i = 0; i < NB_CARTES; i++) {
+    for (unsigned int i = 0; i < NB_CARTES; i++) {
         switch (paquet[i].valeur)
         {
         case 11:
