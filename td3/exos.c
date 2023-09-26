@@ -15,7 +15,7 @@ typedef enum {
     VALET,
     DAME,
     ROI,
-    AS = 14
+    AS
 } Valeur;
 
 //exo2 
