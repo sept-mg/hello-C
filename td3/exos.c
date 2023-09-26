@@ -37,7 +37,7 @@ int main() {
 
     Carte paquet[NB_CARTES];
 
-    int index = 0;
+    unsigned int index = 0;
 
     for (Couleur couleur = TREFLE; couleur <= PIQUE; couleur++) {
         for (Valeur valeur = SEPT; valeur <= AS; valeur++) {
