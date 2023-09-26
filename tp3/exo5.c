@@ -51,7 +51,7 @@ int main()
     
     float moyenneTailles = (float)sommeTailles / maxIndex;
     float diff = fabs(etudiants[0].taille - moyenneTailles);
-    int index = 0;
+    int indexMoy = 0;
     
     for (int a = 1; a < maxIndex; a++)
     {
@@ -59,13 +59,13 @@ int main()
         if (currentDiff < diff)
         {
             diff = currentDiff;
-            index = a;
+            indexMoy = a;
         }
     }
     
     printf("Etudiant dont la taille est la plus proche de la moyenne :\n");
-    printf("Nom : %s ", etudiants[index].nom);
-    printf("Taille : %u cm\n", etudiants[index].taille);
+    printf("Nom : %s ", etudiants[indexMoy].nom);
+    printf("Taille : %u cm\n", etudiants[indexMoy].taille);
 
     return 0;
 }
