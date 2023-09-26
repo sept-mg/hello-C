@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 enum { LONGUEUR_MAX = 30, NB_ETUDIANTS_MAX = 20 };
 
@@ -12,8 +13,8 @@ typedef struct
 int main() 
 {
     Etudiant etudiants[NB_ETUDIANTS_MAX];
-
-    for (int i = 0; i < NB_ETUDIANTS_MAX; i++)
+    int i = 0;
+    for (; i < NB_ETUDIANTS_MAX; i++)
     {
         char tempString[LONGUEUR_MAX];
         printf("Nom de l'étudiant : ");
@@ -23,19 +24,25 @@ int main()
         unsigned int temp;
         scanf("%u", &temp);
         if(temp)
-        {
-            int j = 0;
-            while (temp > etudiants[j].taille && j < i)
+        { 
+            int j = i;
+            while (j > 0 && temp < etudiants[j - 1].taille)
             {
-                j++;
+                strcpy(etudiants[j].nom, etudiants[j - 1].nom);
+                etudiants[j].taille = etudiants[j - 1].taille;
+                j--;
             }
-            for(int k = j; k<=i; k++)
-            {
-                
-            }
+
+            strcpy(etudiants[j].nom, tempString);
+            etudiants[j].taille = temp;
             
         }
-        else i = NB_ETUDIANTS_MAX;
+        else i += NB_ETUDIANTS_MAX;
+    }
+    
+    for (int a = 0; a < i - NB_ETUDIANTS_MAX - 1; a++)
+    {
+        printf("etudiant : %s de taille %u cm\n", etudiants[a].nom, etudiants[a].taille);
     }
     
     return 0;
