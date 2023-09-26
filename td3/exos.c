@@ -29,10 +29,13 @@ int main() {
     enum {
         nbValeurs = AS - SEPT + 1,
         nbCouleurs = sizeof(Couleur), //4
-        taillePaquet = nbCouleurs * nbValeurs
+        NB_CARTES = nbCouleurs * nbValeurs
+
+        //ou directement
+        //NB_CARTES = 32
     };
 
-    Carte paquet[taillePaquet];
+    Carte paquet[NB_CARTES];
 
     int index = 0;
 
@@ -46,8 +49,8 @@ int main() {
 
 
     //exo4
-    for (int i = 0; i < taillePaquet - 1; i++) {
-        int p = alea(i, taillePaquet - 1); // Choisir une position au hasard
+    for (int i = 0; i < NB_CARTES - 1; i++) {
+        int p = alea(i, NB_CARTES - 1); // Choisir une position au hasard
         Carte temp = paquet[i];
         paquet[i] = paquet[p];
         paquet[p] = temp;
@@ -55,7 +58,7 @@ int main() {
 
     
     //exo5
-    for (int i = 0; i < taillePaquet; i++) {
+    for (int i = 0; i < NB_CARTES; i++) {
         switch (paquet[i].valeur)
         {
         case 11:
