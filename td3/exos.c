@@ -48,7 +48,7 @@ int main() {
     }
 
 
-    //exo4
+    //exo4                       //jusqu'a 30 pour pas echanger la derniere carte avec elle meme
     for (unsigned int j = 0; j < NB_CARTES - 1; j++) {
         int p = alea(j, NB_CARTES - 1); // Choisir une position au hasard
         Carte temp = paquet[j];
