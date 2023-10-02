@@ -1,6 +1,10 @@
 #include <time.h>
 #include <stdio.h>
 
+typedef unsigned long clock_t ;
+// d´efinition de constante
+const clock_t CLOCKS_PER_SEC = /* d´epend de l’ impl´ementation */;
+
 void unGrosCalcul()
 {
 
