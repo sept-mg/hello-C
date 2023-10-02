@@ -40,6 +40,8 @@ int main()
         else i += NB_ETUDIANTS_MAX;
     }
     
+    if(i==NB_ETUDIANTS_MAX) i+= NB_ETUDIANTS_MAX+1;
+
     for (int a = 0; a < i - NB_ETUDIANTS_MAX - 1; a++)
     {
         printf("etudiant : %s de taille %u cm\n", etudiants[a].nom, etudiants[a].taille);
