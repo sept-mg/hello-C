@@ -1,33 +1,34 @@
 #include <stdio.h>
 
-int calculerUn(int u0, int n)
+int calculerTempsDeVol(int u0)
 {
-    while (n > 0)
+    int tempsDeVol = 0;
+
+    while (u0 != 1)
     {
         if (u0 % 2 == 0)
         {
             u0 /= 2;
         }
-        
+
         else
         {
             u0 = 3 * u0 + 1;
         }
-        n--;
+        tempsDeVol++;
     }
-    return u0;
+
+    return tempsDeVol;
 }
 
 int main()
 {
-    int u0, n;
+    int u0;
     printf("Entrez la valeur de u0 : ");
     scanf("%d", &u0);
-    printf("Entrez l'indice n : ");
-    scanf("%d", &n);
 
-    int un = calculerUn(u0, n);
-    printf("La valeur de u%d est : %d\n", n, un);
+    int tempsDeVol = calculerTempsDeVol(u0);
+    printf("Le temps de vol de u%d est : %d\n", u0, tempsDeVol);
 
     return 0;
 }
