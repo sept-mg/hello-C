@@ -35,14 +35,13 @@ int divisionEntiere(int dividende, int diviseur)
 
 int main()
 {
-    int dividende, diviseur;
-    printf("Entrez le dividende : ");
-    scanf("%d", &dividende);
-    printf("Entrez le diviseur : ");
-    scanf("%d", &diviseur);
+    assert(divisionEntiere(10, 3) == 3);
+    assert(divisionEntiere(-10, 3) == -3);
+    assert(divisionEntiere(10, -3) == -3);
+    assert(divisionEntiere(-10, -3) == 3);
 
-    int resultat = divisionEntiere(dividende, diviseur);
-    printf("Le quotient de %d / %d est : %d\n", dividende, diviseur, resultat);
+
+    printf("Tous les tests ont réussi.\n");
 
     return 0;
 }
