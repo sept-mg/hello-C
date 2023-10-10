@@ -83,17 +83,52 @@ int estValide(int ligne, int colonne) {
 	return ligne >= 0 && ligne < TAILLE && colonne >= 0 && colonne < TAILLE && !TERRAIN[ligne][colonne];
 }
 
+///print tableau
+void printTab(int tab[TAILLE][TAILLE])
+{
+	for (int i = 0; i < TAILLE; i++)
+	{
+		for (int j = 0; j < TAILLE; j++)
+		{
+			printf("%d ", tab[i][j]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
+
 int distance(int ligDep, int colDep, int ligArr, int colArr) {
 	int ter[TAILLE][TAILLE];
+	
+	for (int i = 0; i < TAILLE; i++)
+	{
+		for (int j = 0; j < TAILLE; j++)
+		{
+			ter[i][j] = -1;
+		}
+		
+	}
 	ter[ligDep][colDep] = 0;
 
-	for (int i = 0; i < ligArr; i++)
+	for (int l = 0; l <= ligArr; l++)
 	{
-		for (int j = 0; j < colArr; j++)
-        {
-            ter[i][j] = 0;
-        }
+		for (int c = 0; c <= colArr; c++)
+		{
+			for (int i = 0; i < NB_DIR; i++)
+			{
+				if (ter[l][c] != -1)
+				{
+					int li = l + DIR[i][1];
+					int co = c + DIR[i][2];
+					if (estValide(li, co) && ter[li][co] == -1)
+						ter[li][co] = ter[l][c] + 1;
+				}
+
+			}
+
+		}
 	}
-	
-	return 6;
+
+	return ter[ligArr][colArr];
 }
+
