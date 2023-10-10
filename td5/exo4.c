@@ -10,11 +10,11 @@ int indexMax(const int t[], int nb)
     return m;
 }
 
-void swap(int a[], int m, int nb)
+void swap(int* a, int* b)
 {
-    int temp = a[nb - 1];
-    a[nb - 1] = a[m];
-    a[m] = temp;
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 void sort(int t[], int nb)
@@ -23,7 +23,7 @@ void sort(int t[], int nb)
     for (; nb > 1; nb--)
     {
         m = indexMax(t, nb);
-        swap(t, m, nb);
+        swap(&t[nb-1], &t[m]);
     }
     
 }
