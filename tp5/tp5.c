@@ -99,14 +99,14 @@ void printTab(int tab[TAILLE][TAILLE])
 
 int distance(int ligDep, int colDep, int ligArr, int colArr) {
 	int ter[TAILLE][TAILLE];
-	
+
 	for (int i = 0; i < TAILLE; i++)
 	{
 		for (int j = 0; j < TAILLE; j++)
 		{
 			ter[i][j] = -1;
 		}
-		
+
 	}
 	ter[ligDep][colDep] = 0;
 
@@ -120,7 +120,7 @@ int distance(int ligDep, int colDep, int ligArr, int colArr) {
 				{
 					int li = l + DIR[i][1];
 					int co = c + DIR[i][2];
-					if (estValide(li, co) && ter[li][co] == -1)
+					if (estValide(li, co) && (ter[li][co] == -1 || ter[li][co] > ter[l][c] + 1))
 						ter[li][co] = ter[l][c] + 1;
 				}
 
@@ -131,4 +131,3 @@ int distance(int ligDep, int colDep, int ligArr, int colArr) {
 
 	return ter[ligArr][colArr];
 }
-
