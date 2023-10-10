@@ -83,19 +83,19 @@ int estValide(int ligne, int colonne) {
 	return ligne >= 0 && ligne < TAILLE && colonne >= 0 && colonne < TAILLE && !TERRAIN[ligne][colonne];
 }
 
-///print tableau
-void printTab(int tab[TAILLE][TAILLE])
-{
-	for (int i = 0; i < TAILLE; i++)
-	{
-		for (int j = 0; j < TAILLE; j++)
-		{
-			printf("%d ", tab[i][j]);
-		}
-		printf("\n");
-	}
-	printf("\n");
-}
+// ///print tableau
+// void printTab(int tab[TAILLE][TAILLE])
+// {
+// 	for (int i = 0; i < TAILLE; i++)
+// 	{
+// 		for (int j = 0; j < TAILLE; j++)
+// 		{
+// 			printf("%d ", tab[i][j]);
+// 		}
+// 		printf("\n");
+// 	}
+// 	printf("\n");
+// }
 
 int distance(int ligDep, int colDep, int ligArr, int colArr) {
 	int ter[TAILLE][TAILLE];
