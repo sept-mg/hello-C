@@ -1,0 +1,20 @@
+début
+    créer une file (queue) vide;
+    ajouter la case de départ dans la file avec une distance de 0;
+    marquer la case de départ comme visitée;
+
+    tant que la file n'est pas vide faire
+        extraire une case de la file;
+        si la case est la case d'arrivée alors
+            retourner sa distance;
+        fin
+
+        pour chaque case voisine non encore visitée faire
+            lui associer la distance de la case actuelle + 1;
+            la marquer comme visitée;
+            ajouter la case voisine dans la file avec sa nouvelle distance;
+        fin
+    fin
+
+    retourner une valeur particulière;
+fin
