@@ -19,7 +19,7 @@ Exercice 1 questions
 2.  Puis dans un second temps 
    vérifié que 1 est a la premiere place et 5 a la 5ème
    puis ajouter 10 en premier place et verifié que c'est le cas
-   ajouter 11 a la 6ème et la aussi vérifé puis lancer la commande systeme **windows ** "pause" *(j'ai pas windows j'ai un linux ! plus jamais des trucs comme ca svp)*
+   ajouter 11 a la 6ème et la aussi vérifé puis lancer la commande systeme **windows** "pause" *(j'ai pas windows j'ai un linux ! plus jamais des trucs comme ca svp)*
    
    ```cpp
    assert(lire(c, 0) == 1);
