@@ -14,7 +14,7 @@ Exercice 1 questions
    afficher(c);
    ```
    
-   ce qui donne cette affichage en console ⬇️<img src="file:///C:/Users/SEPT/Desktop/projet/hello-C/periode-B/tp/tp2/out1.png" title="" alt="out1.png" data-align="left">
+   ce qui donne cette affichage en console ⬇️<img src=".out1.png" title="out1.png" alt="out1.png" data-align="left">
 
 2.  Puis dans un second temps 
    vérifié que 1 est a la premiere place et 5 a la 5ème
