@@ -67,6 +67,48 @@ void afficher(const ConteneurTS& c) {
 	cout << "]" << endl;
 }
 
+/**
+* @brief comparer à deux arguments (arg1 et arg2) de type Item 
+* @param[in] arg1 premier item que l'on va comparer au deuxieme
+* @param[in] arg2 deuxieme item qui va permettre la comparaison avec le premier argument
+* @return renvoie, un nombre négatif si arg1<arg2, 0 si arg1=arg2, un nombre strictement positif si arg1>arg2.
+*/
+int comparer(const Item &arg1, const Item &arg2)
+{
+	return arg1 - arg2;
+}
+
+/* permet de culumer les extrema minimum et maximum */
+struct Extrema
+{
+	unsigned int min;
+	unsigned int max;
+};
+
+/**
+* @brief La fonction extrema, indique les extrema du conteneur d’items
+* @param[in] le conteneur
+* @return deux indexes dans le conteneur r : l’une correspondant à la plus petite valeur des éléments du conteneur, l’autre à la plus grande valeur
+*/
+Extrema extrema(const ConteneurTS& c)
+{
+	Extrema ex;
+	ex.min = 0;
+	ex.max = 0;
+
+	for (unsigned int i = 0; i < c.nbItems; i++)
+	{
+		if (comparer(c.tab[i], c.tab[ex.max]))
+			ex.max = i;
+
+		if(comparer(c.tab[ex.min], c.tab[i]) > 0)
+			ex.min = i;
+	}
+
+	return ex;
+}
+
+
 int main() {
 	ConteneurTS c;
 	initialiser(c);
@@ -81,6 +123,11 @@ int main() {
 	assert(lire(c, 0) == 10);
 	ecrire(c, 5, 11);
 	assert(lire(c, 5) == 11);
+
+	Extrema ex;
+	ex = extrema(c);
+	assert(ex.max == 5);
+	assert(ex.min == 1);
 
 	system("pause"); return 0;
 }
