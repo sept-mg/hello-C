@@ -1,84 +1,43 @@
 /**
  * @file ConteneurTDE.cpp
- * Projet sem04-tp-Cpp1-3
- * @author l'équipe pédagogique 
+ * Projet sem04-tp-Cpp1-2
+ * @author l'ï¿½quipe pï¿½dagogique 
  * @version 2 - 29/11/2014
- * @brief corrige du TD n°3 sur machine - Exercice 2
- * Structures de données et algorithmes - DUT1 Paris Descartes
+ * @brief corrige du TD nï¿½3 sur machine - Exercice 2
+ * Structures de donnï¿½es et algorithmes - DUT1 Paris Descartes
  */
 
 #include <iostream>
 #include <cassert>
+#include "ConteneurTDE.h"
 using namespace std;
 
-/**
- * @brief Structure de données de type Date
- */
-struct Date {
-	unsigned short jour, mois, annee;
-};
-
- /**
- * @brief Saisie d'une date
- * @return la date saisie
- */
-Date saisir() {
-	Date d;
-	cout << "Date (jour? mois? annee?) ? "; 
-	cin >> d.jour >> d.mois >> d.annee;
-	return d;
-}
-
-/**
- * @brief Affiche une date
- * @param[in] d : la date à afficher
- */
-void afficher(const Date& d) {
-	cout << d.jour << '/' << d.mois << '/' << d.annee << "  ";
-}
-
-// Spécialisation du type Item (l'item est spécialisé ici en date)
-typedef Date Item;
-
-/** @brief Conteneur d'items alloués en mémoire dynamique
- *  de capacité extensible suivant un pas d'extension
- */ 
-struct ConteneurTDE {
-    unsigned int capacite; 	   // capacité du conteneur (>0)
-	unsigned int pasExtension; // pas d'extension du conteneur (>0)
-	Item* tab;				   // conteneur alloué en mémoire dynamique
-};
-
-void initialiser(ConteneurTDE& t, unsigned int c, unsigned int p);
-void detruire(ConteneurTDE& t);
-Item lire(const ConteneurTDE& t, unsigned int i); 
-void ecrire(ConteneurTDE& t, unsigned int i, const Item& it);
 
 /**
  * @brief Initialise un conteneur d'items
- * Allocation en mémoire dynamique du conteneur d'items
- * de capacité (capa) extensible par pas d'extension (p)
- * @see detruire, pour sa désallocation en fin d'utilisation 
+ * Allocation en mï¿½moire dynamique du conteneur d'items
+ * de capacitï¿½ (capa) extensible par pas d'extension (p)
+ * @see detruire, pour sa dï¿½sallocation en fin d'utilisation 
  * @param[out] c : le conteneur d'items
- * @param [in] capa : capacité du conteneur
- * @param [in] p : pas d'extension de capacité
+ * @param [in] capa : capacitï¿½ du conteneur
+ * @param [in] p : pas d'extension de capacitï¿½
  * @pre capa>0 et p>0
  */
 void initialiser(ConteneurTDE& c, unsigned int capa, unsigned int p) {
 	assert((capa>0) && (p>0));
 	c.capacite = capa;
 	c.pasExtension = p;
-	// arrêt du programme en cas d'erreur d'allocation
+	// arrï¿½t du programme en cas d'erreur d'allocation
 	c.tab = new Item[capa];
 	/* Affichage pour une trace de l'allocation en TP
-	 * Affichage à supprimer après le test du conteneur */	
+	 * Affichage ï¿½ supprimer aprï¿½s le test du conteneur */	
 	cout << "Allocation initiale de " << capa*sizeof(Item) << " octets ("
 		 << capa << " item(s))" << endl;
 }
 
 /**
- * @brief Désalloue un conteneur d'items en mémoire dynamique
- * @see initialiser, le conteneur d'items a déjà été alloué 
+ * @brief Dï¿½salloue un conteneur d'items en mï¿½moire dynamique
+ * @see initialiser, le conteneur d'items a dï¿½jï¿½ ï¿½tï¿½ allouï¿½ 
  * @param[out] c : le conteneur d'items
  */
 void detruire(ConteneurTDE& c) {
@@ -90,7 +49,7 @@ void detruire(ConteneurTDE& c) {
  * @brief Lecture d'un item d'un conteneur d'items
  * @param[in] c : le conteneur d'items
  * @param[in] i : la position de l'item dans le conteneur
- * @return l'item à la position i
+ * @return l'item ï¿½ la position i
  * @pre i < c.capacite   
  */
  Item lire(const ConteneurTDE& c, unsigned int i) {
@@ -101,78 +60,38 @@ void detruire(ConteneurTDE& c) {
 /**
  * @brief Ecrire un item dans un conteneur d'items
  * @param[in,out] c : le conteneur d'items
- * @param[in] i : la position où ajouter/modifier l'item
- * @param[in] it : l'item à écrire 
+ * @param[in] i : la position oï¿½ ajouter/modifier l'item
+ * @param[in] it : l'item ï¿½ ï¿½crire 
  */
 void ecrire(ConteneurTDE& c, unsigned int i, const Item& it) {
 	if (i>=c.capacite) {
-		/* Stratégie de réallocation proportionnelle au pas d'extension :
+		/* Stratï¿½gie de rï¿½allocation proportionnelle au pas d'extension :
 		 * initialisez la nouvelle taille du conteneur (newTaille) 
-		 * à i * c.pasExtension */
+		 * ï¿½ i * c.pasExtension */
 		unsigned int newTaille = (i+1) * c.pasExtension;
-		/* Allouez en mémoire dynamique un nouveau tableau (newT) 
-		 * à cette nouvelle taille*/
+		/* Allouez en mï¿½moire dynamique un nouveau tableau (newT) 
+		 * ï¿½ cette nouvelle taille*/
 		Item* newT = new Item[newTaille];
-		/* Recopiez les items déjà stockés dans le conteneur */
+		/* Recopiez les items dï¿½jï¿½ stockï¿½s dans le conteneur */
     	for (unsigned int i = 0; i < c.capacite; ++i)
       		newT[i] = c.tab[i];
-      	/* Désallouez l'ancien tableau support du conteneur */
+      	/* Dï¿½sallouez l'ancien tableau support du conteneur */
     	delete [] c.tab;
-    	/* Actualiser la mise à jour du conteneur en mémoire dynamique
+    	/* Actualiser la mise ï¿½ jour du conteneur en mï¿½moire dynamique
     	 * Faites pointer le tableau support du conteneur 
-    	 * sur le nouveau tableau en mémoire dynamique */
+    	 * sur le nouveau tableau en mï¿½moire dynamique */
     	c.tab = newT;
     	/* Actualisez la taille du conteneur */
     	c.capacite = newTaille;
     		/* Affichage pour une trace de l'allocation en TP
-	 	* En TP, pour tracer l'extension de l'allocation en mémoire,
+	 	* En TP, pour tracer l'extension de l'allocation en mï¿½moire,
 	 	* affichez les informations qui suivent.
-	 	* Cet affichage sera supprimé après le test du conteneur */	
-		cout << "Extension - Allocaton/Réallocation de " << newTaille*sizeof(Item) 
+	 	* Cet affichage sera supprimï¿½ aprï¿½s le test du conteneur */	
+		cout << "Extension - Allocaton/Rï¿½allocation de " << newTaille*sizeof(Item) 
 		 << " octets (" << newTaille << " items)." << endl;
 	}
-	/* Ecriture de l'item (it) à la position i dans le conteneur */
+	/* Ecriture de l'item (it) ï¿½ la position i dans le conteneur */
 	c.tab[i] = it;
 }
 
 /* Test d'un conteneur (de type ConteneurTDE) de dates */ 
-int main() {
-	ConteneurTDE cDates; // Déclaration du conteneur de dates testé
-	Date d;
-	unsigned int nbDates=0; // Nombre de dates enregistrées dans cDates
-	
-	/* Initialisation du conteneur avec capacité=2 et pasExtension=0 */
-	initialiser(cDates, 2 , 2);
-	
-	/* Remplir le conteneur de dates 
-	 * jusqu'à la saisie d'une date d'année 0 (non enregistrée) 
-	 * Mettre à jour nbDates, le nombre de dates saisies*/	
-	unsigned int i = 0;
-	cout << "Saisir des dates jusqu'à la saisie d'une année nulle" << endl;  
-	cout << "Les dates (à l'exception de celle de l'année nulle)" << endl;
-	cout << "seront enregistrées dans le conteneur dynamique" << endl;
-	do {
-		d = saisir();
-		if (d.annee != 0) {
-			ecrire(cDates, i++, d);
-			nbDates++;
-		}
-	} while (d.annee!=0);
-	
-	/* Afficher la capacité du conteneur de dates */	
-	cout << "Capacité du conteneur dynamique : ";
-	cout << cDates.capacite << endl;
-	
-	/* Afficher le conteneur de dates */
-	cout << "Conteneur alloué en mémoire dynamique de " << nbDates 
-		 << " date(s)" << endl;
-	for (unsigned int i = 0; i < nbDates; ++i) {
-		d = lire(cDates, i);
-		afficher(d);
-	}
-	
-	/* Désallouer le conteneur de dates */
-	detruire(cDates);
-	
-	return 0;
-}
